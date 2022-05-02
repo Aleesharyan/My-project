@@ -72,5 +72,25 @@ public class Player : MonoBehaviour
         bullet.Project(this.transform.up);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Asteroid")
+        {
+            //stop movement
+            _rigidbody.velocity = Vector3.zero;
+            //stop rotation
+            _rigidbody.angularVelocity = 0.0f;
+
+            //turn off game object entirely
+            this.gameObject.SetActive(false);
+
+            //need to reference game manager
+            //this function isnt the best to use cause it take some time, however
+            //in this case it won't be called so frequantly as it would if it was in Update for example,
+            //so its not soooo bad
+            FindObjectOfType<GameManager>().PlayerDied();
+        }
+    }
+
 
 }

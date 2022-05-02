@@ -6,8 +6,8 @@ public class Asteroid : MonoBehaviour
 {
     public Sprite[] sprites;
 
-    public float size = 0.7f;
-    public float minSize = 0.5f;
+    public float size = 0.5f;
+    public float minSize = 0.1f;
     public float maxSize = 0.9f;
 
     public float speed = 50.0f;
@@ -48,6 +48,35 @@ public class Asteroid : MonoBehaviour
         _rigidbody.AddForce(direction * this.speed);
 
         Destroy(this.gameObject, this.maxLifetime);
+    }
+
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //check for collision with a bullet
+        if (collision.gameObject.tag == "Bullet")
+        {
+            //asteroid splits into 2 if its big enough to
+            if ((this.size * 0.5f) >= this.minSize)
+            {
+                CreateSplit();
+                CreateSplit();
+            }
+
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void CreateSplit()
+    {
+        Vector2 position = this.transform.position;
+        position += Random.insideUnitCircle * 0.5f;
+
+        Asteroid half = Instantiate(this, position, this.transform.rotation);
+        half.size = this.size * 0.5f;
+
+        //setting new trajectory
+        half.SetTrajectory(Random.insideUnitCircle.normalized * this.speed);
     }
 
     
