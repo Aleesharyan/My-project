@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 1929139908}
   - component: {fileID: 1929139907}
   - component: {fileID: 1929139906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,8 +409,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8118b09efd574c643b1372cc6bf38818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7486525761339849638, guid: 2c3d9bf7f86e4e14d820802b35ef267f, type: 3}
   thrustSpeed: 1
-  turnSpeed: 0.1
+  turnSpeed: 0.05
 --- !u!61 &1929139907
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -518,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 1929139905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.03, y: 0, z: 0}
-  m_LocalScale: {x: 0.46255264, y: 0.45459747, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
