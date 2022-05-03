@@ -17,12 +17,14 @@ public class GameManager : MonoBehaviour
 
     public int score = 0;
 
+
+
     public void AsteroidDestroyed(Asteroid asteroid)
     {
         this.explosion.transform.position = asteroid.transform.position;
         this.explosion.Play();
 
-        // TODO increase score
+       
         //smaller asteroids give more points
         if (asteroid.size < 0.5f)
         {
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
 
         //check how many lives left
         //if no lives left, gameover, if not game continues
-        if (this.lives <= 0)
+        if (lives <= 0)
         {
             GameOver();
         }
@@ -92,5 +94,8 @@ public class GameManager : MonoBehaviour
         //respawn player
         Invoke(nameof(Respawn), this.respawnTime);
     }
+
+  
+
 
 }

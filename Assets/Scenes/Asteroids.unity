@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1929139906}
   explosion: {fileID: 2049442883}
-  respawnTime: 3
+  respawnTime: 2
   respawnInvulnerabilityTime: 3
   lives: 3
   score: 0
