@@ -6,14 +6,32 @@ public class GameManager : MonoBehaviour
 {
 
     public Player player;
+
+    public ParticleSystem explosion;
+
     public float respawnTime = 3.0f;
 
     public float respawnInvulnerabilityTime = 3.0f;
 
     public int lives = 3;
 
+    public int score = 0;
+
+    public void AsteroidDestroyed(Asteroid asteroid)
+    {
+        this.explosion.transform.position = asteroid.transform.position;
+        this.explosion.Play();
+
+        // TODO increase score
+    }
+
     public void PlayerDied()
     {
+
+        //play particle effect where the player is
+        this.explosion.transform.position = this.player.transform.position;
+        this.explosion.Play();
+
         //decrease lives
         this.lives--;
 
