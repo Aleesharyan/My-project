@@ -23,6 +23,17 @@ public class GameManager : MonoBehaviour
         this.explosion.Play();
 
         // TODO increase score
+        //smaller asteroids give more points
+        if (asteroid.size < 0.5f)
+        {
+            this.score += 100;
+        }
+        else if (asteroid.size > 0.5f)
+        {
+            this.score += 50;
+        }
+
+
     }
 
     public void PlayerDied()
@@ -72,7 +83,14 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        //TODO
+        //reset lives
+        this.lives = 3;
+
+        //reset score
+        this.score = 0;
+
+        //respawn player
+        Invoke(nameof(Respawn), this.respawnTime);
     }
 
 }
